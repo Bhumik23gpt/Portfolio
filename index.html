@@ -277,36 +277,37 @@
 
     <!-- JavaScript to load client photos -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const clientFolder = 'C:/Users/bhumi/Downloads/Portfolio'; // Update with your actual folder path
-            const clientPhotosElement = document.getElementById('clientPhotos');
+document.addEventListener('DOMContentLoaded', function() {
+    const clientPhotosElement = document.getElementById('clientPhotos');
 
-            // List of client photo filenames and corresponding links
-            const clients = [
-                { photo: 'client7.png', link: 'https://www.instagram.com/way2print_pvt_ltd/' },
-                { photo: 'client6.jpg', link: 'https://carzoom.in/' },
-                { photo: 'client5.png', link: 'https://amazingworld.travel/' },
-                { photo: 'client4.png', link: 'https://www.quora.com/profile/Pradeep-Singh-6353' },
-                { photo: 'client3.jpg', link: 'https://www.mygeekshelp.com/' },
-                { photo: 'client2.jpg', link: 'https://www.instagram.com/way2print_pvt_ltd/' },
-                { photo: 'client1.jpg', link: 'https://storiespub.com/' }
-            ];
+    // List of client photo filenames and corresponding links
+    const clients = [
+        { photo: 'client7.png', link: 'https://www.instagram.com/way2print_pvt_ltd/' },
+        { photo: 'client6.jpg', link: 'https://carzoom.in/' },
+        { photo: 'client5.png', link: 'https://amazingworld.travel/' },
+        { photo: 'client4.png', link: 'https://www.quora.com/profile/Pradeep-Singh-6353' },
+        { photo: 'client3.jpg', link: 'https://www.mygeekshelp.com/' },
+        { photo: 'client2.jpg', link: 'https://www.instagram.com/way2print_pvt_ltd/' },
+        { photo: 'client1.jpg', link: 'https://storiespub.com/' }
+    ];
 
-            // Load client photos with hyperlinks
-            clients.forEach(client => {
-                const img = document.createElement('img');
-                img.src = `file:///${clientFolder}/${client.photo}`;
-                img.alt = 'Client Photo';
-                img.className = 'client-img';
+    // Load client photos with hyperlinks
+    clients.forEach(client => {
+        const img = document.createElement('img');
+        img.src = `client-photos/${client.photo}`;  // Updated to relative path
+        img.alt = 'Client Photo';
+        img.className = 'client-img';
 
-                const link = document.createElement('a');
-                link.href = client.link;
-                link.target = '_blank'; // Open link in new tab
-                link.appendChild(img);
+        // Create a link around the image
+        const link = document.createElement('a');
+        link.href = client.link;
+        link.target = '_blank';  // Open link in a new tab
+        link.appendChild(img);  // Append the image to the link
 
-                clientPhotosElement.appendChild(link);
-            });
-        });
+        // Append the link to the container element
+        clientPhotosElement.appendChild(link);
+    });
+});
     </script>
 </body>
 </html>
