@@ -33,10 +33,10 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         .header .logo {
-            font-size: 24px;
+            font-size: 20px; /* Adjusted for smaller screens */
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
         .header .contact-btn {
             background-color: #ffffff;
@@ -51,34 +51,35 @@
         /* Profile Section */
         .profile-section {
             display: flex;
+            flex-direction: column; /* Stacking content in smaller screens */
             align-items: center;
-            padding: 30px 20px;
+            padding: 20px;
             background-color: #333333;
         }
         .profile-section .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 150px; /* Adjusted for smaller screens */
+            height: 150px; /* Adjusted for smaller screens */
             border: 5px solid #FF8C00;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 30px;
+            margin-bottom: 20px;
         }
         .profile-section .profile-img img {
             width: 100%;
             height: auto;
         }
         .profile-section .profile-info {
-            flex: 1;
-            font-size: 18px;
+            font-size: 16px; /* Adjusted font size */
             text-align: justify;
+            margin-top: 20px;
         }
 
         /* Skills Section */
         .skills-section {
             background-color: #FF8C00;
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         .skills-section h2 {
             color: #000000;
@@ -88,57 +89,67 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-size: 22px; /* Adjusted font size */
         }
         .skills-section .skills-columns {
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
+            justify-content: center; /* Centering columns */
         }
         .skills-section .column {
-            width: calc(50% - 20px);
+            width: 100%;
+            max-width: 300px; /* Limiting width for smaller screens */
             margin-bottom: 20px;
         }
         .skills-section .bar {
-            height: 25px;
+            height: 20px; /* Reduced bar height */
             background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
+            border-radius: 10px;
             margin-bottom: 10px;
             position: relative;
             overflow: hidden;
         }
         .skills-section .bar .bar-fill {
             height: 100%;
-            width: 0;
+            width: var(--percentage);
             background-color: #ffffff;
             position: absolute;
             top: 0;
             left: 0;
-            animation: fillAnimation 2s forwards;
-            border-radius: 15px;
+            border-radius: 10px;
+            animation: fillAnimation 2s forwards; /* Added animation */
         }
         .skills-section .bar .bar-text {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
             color: #000000;
-            font-size: 14px;
+            font-size: 12px; /* Adjusted font size */
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: bold;
         }
 
+        /* Animation for filling bars */
+        @keyframes fillAnimation {
+            from { width: 0; }
+            to { width: var(--percentage); }
+        }
+
         /* Clients Section */
         .clients-section {
             background-color: #333333;
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
         }
         .clients-section h2 {
             color: #FF8C00;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-size: 22px; /* Adjusted font size */
         }
         .clients-section .client-photos {
             display: flex;
@@ -146,12 +157,12 @@
             flex-wrap: wrap;
         }
         .clients-section .client-img {
-            width: 200px;
-            height: 200px;
+            width: 120px; /* Adjusted image size */
+            height: 120px; /* Adjusted image size */
             object-fit: cover;
-            border: 5px solid #FF8C00;
+            border: 3px solid #FF8C00;
             border-radius: 50%;
-            margin: 15px;
+            margin: 10px;
             transition: transform 0.3s ease;
         }
         .clients-section .client-img:hover {
@@ -161,19 +172,21 @@
         /* Contact Section */
         .contact-section {
             background-color: #FF8C00;
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         .contact-section h2 {
             color: #000000;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-size: 22px; /* Adjusted font size */
         }
         .contact-section p {
-            font-size: 18px;
+            font-size: 16px; /* Adjusted font size */
             line-height: 1.8;
+            margin-bottom: 10px;
         }
 
         /* Footer */
@@ -185,18 +198,15 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-        }
-
-        /* Animation for filling bars */
-        @keyframes fillAnimation {
-            from { width: 0; }
-            to { width: var(--percentage); }
+            font-size: 14px; /* Adjusted font size */
         }
 
         /* Responsive Design */
-        @media screen and (max-width: 768px) {
+        @media screen and (min-width: 769px) {
+            /* Larger screens - adjust as needed */
             .skills-section .column {
-                width: 100%;
+                width: calc(50% - 20px);
+                max-width: none;
             }
         }
     </style>
@@ -224,33 +234,21 @@
         <div class="skills-columns">
             <!-- Left Column -->
             <div class="column">
-                <div class="bar" style="--percentage: 90%;">
-                    <div class="bar-fill" style="--percentage: 90%;"></div>
-                    <div class="bar-text">T-shaped Digital Marketer - 90%</div>
-                </div>
-                <div class="bar" style="--percentage: 85%;">
-                    <div class="bar-fill" style="--percentage: 85%;"></div>
-                    <div class="bar-text">Copywriter - 85%</div>
-                </div>
-                <div class="bar" style="--percentage: 85%;">
-                    <div class="bar-fill" style="--percentage: 85%;"></div>
-                    <div class="bar-text">WordPress - 85%</div>
-                </div>
+                <div class="bar" style="--percentage: 90%;"><div class="bar-fill" style="--percentage: 90%;"></div></div>
+                <div class="bar-text">T-shaped Digital Marketer - 90%</div>
+                <div class="bar" style="--percentage: 85%;"><div class="bar-fill" style="--percentage: 85%;"></div></div>
+                <div class="bar-text">Copywriter - 85%</div>
+                <div class="bar" style="--percentage: 85%;"><div class="bar-fill" style="--percentage: 85%;"></div></div>
+                <div class="bar-text">WordPress - 85%</div>
             </div>
             <!-- Right Column -->
             <div class="column">
-                <div class="bar" style="--percentage: 70%;">
-                    <div class="bar-fill" style="--percentage: 70%;"></div>
-                    <div class="bar-text">Meta Ads - 70%</div>
-                </div>
-                <div class="bar" style="--percentage: 60%;">
-                    <div class="bar-fill" style="--percentage: 60%;"></div>
-                    <div class="bar-text">Performance Marketing - 60%</div>
-                </div>
-                <div class="bar" style="--percentage: 30%;">
-                    <div class="bar-fill" style="--percentage: 30%;"></div>
-                    <div class="bar-text">Python - 30%</div>
-                </div>
+                <div class="bar" style="--percentage: 70%;"><div class="bar-fill" style="--percentage: 70%;"></div></div>
+                <div class="bar-text">Meta Ads - 70%</div>
+                <div class="bar" style="--percentage: 60%;"><div class="bar-fill" style="--percentage: 60%;"></div></div>
+                <div class="bar-text">Performance Marketing - 60%</div>
+                <div class="bar" style="--percentage: 30%;"><div class="bar-fill" style="--percentage: 30%;"></div></div>
+                <div class="bar-text">Python - 30%</div>
             </div>
         </div>
     </div>
